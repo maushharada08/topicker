@@ -1,0 +1,48 @@
+footer{
+    position:fixed;
+    bottom:0;
+    width: 100%;
+}
+
+/*タブ実装*/
+.tab_box .btn_area {
+	margin:0 10px;
+	display: -webkit-box;
+	display: flex;
+}
+
+.tab_box .tab_btn {
+	width: 33%;
+	padding: 8px 0;
+	color: #333;
+	background: #f5f7f8;
+	text-align: center;
+	cursor: pointer;
+	transition: all 0.2s ease 0s;
+    border-radius: 5px;
+}
+
+.tab_box .tab_btn + .tab_btn {
+	margin-left: 8px;
+}
+
+.tab_box .tab_btn:hover {
+	background-color: #dce1e4;
+}
+
+.tab_box .tab_btn.active {
+    background:#07539f;
+    color:#fff;
+}
+
+.tab_box .panel_area {
+    padding: 20px;
+}
+
+.tab_box .tab_panel {
+    display:none;
+}
+
+.tab_box .tab_panel.active {
+    display:block;
+}
