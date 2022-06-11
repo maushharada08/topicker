@@ -1,7 +1,38 @@
-footer{
+/* body{
+    color:red;
+} */
+
+.footer-nav{
     position:fixed;
     bottom:0;
-    width: 100%;
+    box-shadow: inset;
+    width:100%;
+}
+
+a{
+    text-decoration: none !important;
+    color:black ;
+}
+
+.post-btn{
+    position: fixed;
+    right:10px;
+    bottom: 60px;
+    z-index: 10;
+}
+
+.fa-circle-plus{
+    color:purple !important;
+    font-size:300%;
+    width:50px;
+}
+
+.dm-input{
+    position: fixed;
+    bottom:60px;
+    left:30%;
+    margin:0 auto;
+    width:50%;
 }
 
 /*タブ実装*/
@@ -19,7 +50,6 @@ footer{
 	text-align: center;
 	cursor: pointer;
 	transition: all 0.2s ease 0s;
-    border-radius: 5px;
 }
 
 .tab_box .tab_btn + .tab_btn {
@@ -36,6 +66,7 @@ footer{
 }
 
 .tab_box .panel_area {
+    border: solid 1px #e3ebf3;
     padding: 20px;
 }
 

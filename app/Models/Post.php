@@ -16,4 +16,8 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function topic()
+    {
+        return $this->belongsTo(Topic::class);
+    }
 }

@@ -1,11 +1,10 @@
 @component('mail::message')
-# Thank you for registering!
+# You registered Topicker
 
-Welcome to E-card.
-You can start create your own business card now.
+Thank you for joining our app.
 
 @component('mail::button', ['url' => ''])
-Create now!
+Start posting
 @endcomponent
 
 Thanks,<br>

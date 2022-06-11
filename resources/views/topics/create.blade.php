@@ -5,20 +5,19 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Edit profile') }}</div>
+                <div class="card-header">{{ __('New Topic') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/profile/{{ $user->id }}" enctype="multipart/form-data">
+                    <form method="POST" action="/topic" enctype="multipart/form-data">
                         @csrf
-                        @method('PATCH')
 
                         <div class="row mb-3">
-                            <label for="bio" class="col-md-4 col-form-label text-md-end">{{ __('bio') }}</label>
+                            <label for="title" class="col-md-4 col-form-label text-md-end">{{ __('title') }}</label>
 
                             <div class="col-md-6">
-                                <input id="bio" type="text" class="form-control @error('bio') is-invalid @enderror" name="bio" value="{{ $user->profile->bio ?? old('bio') }}" autocomplete="bio" autofocus>
+                                <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" autocomplete="title" autofocus>
 
-                                @error('bio')
+                                @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -43,7 +42,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Update') }}
+                                    {{ __('Create') }}
                                 </button>
                             </div>
                         </div>

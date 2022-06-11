@@ -5277,7 +5277,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['userId'],
+  props: ['topicId', 'follows'],
   mounted: function mounted() {
     console.log('Component mounted.');
   },
@@ -5287,10 +5287,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    followUser: function followUser() {
+    followTopic: function followTopic() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/follow/' + this.userId).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/follow/' + this.topicId).then(function (response) {
         _this.status = !_this.status;
         console.log(response.data);
       })["catch"](function (errors) {
@@ -5302,7 +5302,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     buttonText: function buttonText() {
-      return this.status ? 'フォロー解除' : 'フォロー';
+      return this.status ? 'ピック解除' : 'ピック';
     }
   }
 });
@@ -27912,7 +27912,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('button',{staticClass:"btn btn-success rounded-pill",domProps:{"textContent":_vm._s(_vm.buttonText)},on:{"click":_vm.followUser}})])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('button',{staticClass:"btn btn-success rounded-pill py-1 px-3",domProps:{"textContent":_vm._s(_vm.buttonText)},on:{"click":_vm.followTopic}})])}
 var staticRenderFns = []
 render._withStripped = true
 

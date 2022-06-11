@@ -3,10 +3,6 @@
 use App\Mail\NewUserWelcomeMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfilesController;
-use App\Http\Controllers\PostsController;
-use App\Http\Controllers\FollowsController;
-use App\Http\Controllers\MessagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,23 +17,31 @@ use App\Http\Controllers\MessagesController;
 
 Auth::routes();
 
-Route::get('/message', [MessagesController::class, 'index']);
-
-Route::get('/profile/{user}/edit', [ProfilesController::class, 'edit']);
-Route::get('/profile/{user}/edit_p_image', [ProfilesController::class, 'edit_p_image']);
-Route::get('/profile/{user}/edit_logo', [ProfilesController::class, 'edit_logo']);
-Route::patch('/profile/{user}/p_image', [ProfilesController::class, 'update_p_image']);
-Route::patch('/profile/{user}/logo', [ProfilesController::class, 'update_logo']);
-Route::patch('/profile/{user}', [ProfilesController::class, 'update']);
-Route::get('/profile/{user}', [ProfilesController::class, 'index']);
-
-Route::get('/p/create', [PostsController::class, 'create']);
-Route::get('/p/{post}', [PostsController::class, 'show']);
-Route::post('/p', [PostsController::class, 'store']);
-Route::get('/', [PostsController::class, 'index']);
-
-Route::post('/follow/{user}', [FollowsController::class, 'store']);
-
 Route::get('/email', function(){
     return new NewUserWelcomeMail();
 });
+
+Route::get('/profile/{user}/edit', [App\Http\Controllers\ProfilesController::class, 'edit']);
+Route::patch('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'update']);
+Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index']);
+Route::get('/find', [App\Http\Controllers\ProfilesController::class, 'find']);
+
+Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create']);
+Route::get('/p/{post}', [App\Http\Controllers\PostsController::class, 'show']);
+Route::delete('/p/{post}', [App\Http\Controllers\PostsController::class, 'destroy']);
+Route::post('/p', [App\Http\Controllers\PostsController::class, 'store']);
+Route::get('/search', [App\Http\Controllers\PostsController::class, 'search']);
+Route::get('/', [App\Http\Controllers\PostsController::class, 'index']);
+
+Route::get('/topic/create', [App\Http\Controllers\TopicsController::class, 'create']);
+Route::get('/topic/{topic}', [App\Http\Controllers\TopicsController::class, 'show']);
+Route::post('/topic', [App\Http\Controllers\TopicsController::class, 'store']);
+Route::get('/topic', [App\Http\Controllers\TopicsController::class, 'index']);
+
+Route::post('/follow/{topic}', [App\Http\Controllers\FollowsController::class, 'store'] );
+
+// Route::get('/dm/{user}', [App\Http\Controllers\DmsController::class, 'show']);
+// Route::post('/dm', [App\Http\Controllers\DmsController::class, 'store']);
+// Route::get('/dm', [App\Http\Controllers\DmsController::class, 'index']);
+
+

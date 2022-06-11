@@ -44,36 +44,33 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function boot()
-    {
+    protected static function boot(){
         parent::boot();
 
-        static::created(function ($user) {
+        static::created( function ($user){
             $user->profile()->create([
-                'com_name' => '',
-                'occupation' => '',
-                'username' => '',
-                'username_sm' => '',
-                'p_code' => '',
-                'adress' => '',
-                'email' => '',
-                'tel' => '',
-                'url' => '',
-                'tw' => '',
-                'fb' => '',
-                'in' => '',
-                'yt' => '',
-                'image' => '',
-                'logo' => '',
+                'bio' => 'Your bio'
             ]);
 
             Mail::to($user->email)->send(new NewUserWelcomeMail());
         });
     }
 
+
+
     public function posts()
     {
-        return $this->hasMany(Post::class)->latest();
+        return $this->hasMany(Post::class)->orderBy('created_at', 'DESC');
+    }
+
+    public function topics()
+    {
+        return $this->hasMany(Topic::class);
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(Topic::class);
     }
 
     public function profile()
@@ -81,9 +78,8 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-    public function following()
+    public function dms()
     {
-        return $this->belongsToMany(Profile::class);
+        return $this->hasMany(Dm::class);
     }
-
 }

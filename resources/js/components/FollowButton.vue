@@ -1,45 +1,45 @@
 <template>
     <div>
-        <button class="btn btn-success rounded-pill" @click="followUser" v-text="buttonText"></button>
-
+        <!-- <button>Follow</button> -->
+        <button class="btn btn-success rounded-pill py-1 px-3" @click="followTopic" v-text="buttonText"></button>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
 
-export default {
-    props: ['userId'],
+    export default {
+        props: ['topicId', 'follows'],
 
-    mounted() {
-        console.log('Component mounted.')
-    },
+        mounted() {
+            console.log('Component mounted.')
+        },
 
-    data: function(){
-        return {
-            status: this.follows,
-        }
-    },
+        data: function(){
+            return {
+                status: this.follows,
+            }
+        },
 
-    methods: {
-        followUser(){
-            axios.post('/follow/' + this.userId)
-                .then( response => {
-                    this.status = ! this.status;
-                    console.log(response.data);
-                })
-                .catch( errors =>{
-                    if ( errors.response.status == 401 ){
-                        window.location = '/login';
-                    }
-                });
-        }
-    },
+        methods:{
+            followTopic(){
+                axios.post('/follow/' + this.topicId )
+                    .then(response => {
+                        this.status = ! this.status;
+                        console.log( response.data );
+                    })
+                    .catch( errors => {
+                        if ( errors.response.status == 401 ){
+                            window.location = '/login';
+                        }
+                    });
+            }
+        },
 
-    computed: {
-        buttonText(){
-            return (this.status) ? 'フォロー解除' : 'フォロー';
+        computed: {
+            buttonText(){
+                return ( this.status ) ? 'ピック解除' : 'ピック';
+            }
         }
     }
-}
 </script>

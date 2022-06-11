@@ -18,18 +18,9 @@ class Profile extends Model
 
     public function profileImage()
     {
-        $imagePath = ( $this->image ) ? "/storage/". $this->image : "/storage/profiles/szePiXR5FsjICY8ZWqLVLfX6YLSIi2UqY9oEidDW.jpg";
-        return $imagePath;
+        $imagePath =  ( $this->image ) ? $this->image : "no_image.jpg";
+        return '/storage/' . $imagePath;
     }
 
-    public function logo()
-    {
-        $imagePath = ( $this->logo ) ? "/storage/". $this->logo : $this->com_name;
-        return $imagePath;
-    }
 
-    public function followers()
-    {
-        return $this->belongsToMany(User::class);
-    }
 }

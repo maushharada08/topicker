@@ -5,3 +5,8 @@ $('.tab_box .tab_btn').click(function() {
 	$(this).addClass('active');
 	$('.tab_box .tab_panel').eq(index).addClass('active');
 });
+
+
+
+
+
